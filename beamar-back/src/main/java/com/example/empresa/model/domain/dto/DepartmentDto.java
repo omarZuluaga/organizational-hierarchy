@@ -1,7 +1,7 @@
 package com.example.empresa.model.domain.dto;
 
 import com.example.empresa.model.domain.Company;
-import com.example.empresa.model.domain.SubDepartment;
+import com.example.empresa.model.domain.Department;
 
 import java.util.Date;
 import java.util.List;
@@ -14,7 +14,9 @@ public class DepartmentDto {
     private String managerPhone;
     private Date managerDateBirth;
     private Date managerDateEntry;
-    private List<SubDepartment> subDepartments;
+    private Long idPadre;
+    /*private Department department;
+    private List<Department> subDepartments;*/
     private Company company;
 
     public Long getId() {
@@ -65,19 +67,35 @@ public class DepartmentDto {
         this.managerDateEntry = managerDateEntry;
     }
 
-    public List<SubDepartment> getSubDepartments() {
-        return subDepartments;
-    }
-
-    public void setSubDepartments(List<SubDepartment> subDepartments) {
-        this.subDepartments = subDepartments;
-    }
-
     public Company getCompany() {
         return company;
     }
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    /*public List<Department> getSubDepartments() {
+        return subDepartments;
+    }
+
+    public void setSubDepartments(List<Department> subDepartments) {
+        this.subDepartments = subDepartments;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }*/
+
+    public Long getIdPadre() {
+        return idPadre;
+    }
+
+    public void setIdPadre(Long idPadre) {
+        this.idPadre = idPadre;
     }
 }

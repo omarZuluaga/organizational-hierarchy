@@ -1,5 +1,7 @@
 package com.example.empresa.model.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -7,17 +9,33 @@ import java.util.List;
 
 @Entity
 @Table(name = "departments")
-public class Department extends BaseEntity{
+public class Department{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "departmentName")
     private String departmentName;
+    @Column(name = "managerName")
     private String managerName;
+    @Column(name = "managerPhone")
     private String managerPhone;
+    @Column(name = "managerDateBirth")
     private Date managerDateBirth;
+    @Column(name = "managerDateEntry")
     private Date managerDateEntry;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<SubDepartment> subDepartments;
+    private Long idPadre;
     @ManyToOne()
     private Company company;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     
     public String getDepartmentName() {
         return departmentName;
@@ -59,19 +77,35 @@ public class Department extends BaseEntity{
         this.managerDateEntry = managerDateEntry;
     }
 
-    public List<SubDepartment> getSubDepartments() {
-        return subDepartments;
-    }
-
-    public void setSubDepartments(List<SubDepartment> subDepartments) {
-        this.subDepartments = subDepartments;
-    }
-
     public Company getCompany() {
         return company;
     }
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    /*public List<Department> getSubDepartments() {
+        return subDepartments;
+    }
+
+    public void setSubDepartments(List<Department> subDepartments) {
+        this.subDepartments = subDepartments;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }*/
+
+    public Long getIdPadre() {
+        return idPadre;
+    }
+
+    public void setIdPadre(Long idPadre) {
+        this.idPadre = idPadre;
     }
 }

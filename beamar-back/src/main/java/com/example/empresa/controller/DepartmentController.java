@@ -1,6 +1,7 @@
 package com.example.empresa.controller;
 
 import com.example.empresa.model.domain.dto.DepartmentDto;
+import com.example.empresa.model.domain.dto.DptAndSubDptDto;
 import com.example.empresa.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -33,5 +34,10 @@ public class DepartmentController {
     @PutMapping(value = "/update/{id}")
     public DepartmentDto update(@RequestBody  DepartmentDto departmentDto, @PathVariable  Long id){
         return departmentService.update(departmentDto, id);
+    }
+
+    @GetMapping(value = "/getAll/{id}")
+    public List<DptAndSubDptDto> findAll(@PathVariable Long id){
+        return departmentService.getAll(id);
     }
 }

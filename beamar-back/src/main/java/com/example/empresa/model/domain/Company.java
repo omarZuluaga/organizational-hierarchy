@@ -6,12 +6,24 @@ import java.util.List;
 
 @Entity
 @Table(name = "companies")
-public class Company extends BaseEntity{
+public class Company{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "nit")
     private String nit;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Department> departments;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -29,11 +41,4 @@ public class Company extends BaseEntity{
         this.nit = nit;
     }
 
-    public List<Department> getDepartments() {
-        return departments;
-    }
-
-    public void setDepartments(List<Department> departments) {
-        this.departments = departments;
-    }
 }
